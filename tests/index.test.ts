@@ -19,9 +19,13 @@ describe('testing index file', () => {
         expect(merge([1, 3], [3, 4], [])).toStrictEqual([1, 3, 3, 4]);
     });
 
-    test('passing 1 sorted arrays and 2 empty arrays should result in 1 sorted array', () => {
+    test('passing 1 sorted array and 2 empty arrays should result in 1 sorted array', () => {
         expect(merge([], [], [6, 5, 0])).toStrictEqual([0, 5, 6]);
         expect(merge([1, 3], [], [])).toStrictEqual([1, 3]);
         expect(merge([], [3, 4], [])).toStrictEqual([3, 4]);
+    });
+
+    test('passing 3 sorted arrays with negatives should result in 1 sorted array', () => {
+        expect(merge([-1, 3, 4], [-10, 2], [6, 5, 0, -3])).toStrictEqual([-10, -3, -1, 0, 2, 3, 4, 5, 6]);
     });
 });
